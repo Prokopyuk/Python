@@ -10,17 +10,9 @@
 
 Вывод должен содержать одну строку с числами нового списка, разделёнными пробелом.
 """
-a = (int(i)for i in input().split())
-b = []
-b += a
-
-if len(b)==1:
-    print(b[0])
+numbers = [int(i) for i in input().split()]
+if len(numbers) == 1:
+    print(numbers[0])
 else:
-    sum = 0
-    for i in range(0,len(b)):
-        if i == (len(b)-1):
-            sum = b[i-1] + b[0]
-        else:
-            sum = b[i-1] + b[i+1]
-        print (sum, end=" ")
+    for i in range(len(numbers)):
+        print(numbers[i - 1] + numbers[(i + 1) % len(numbers)], end=" ")
