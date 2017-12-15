@@ -10,18 +10,21 @@
 В исходном тексте не встречаются цифры, так что код
  однозначно интерпретируем.
 """
+import re
+with open ("dataset_3363_2.txt", "a")as f :
+    f.write("a2a10b1")
+
+
 s1 = ""
 s2 = ""
-j = ""
+lst = []
 
 with open("dataset_3363_2.txt","r") as input:
     s1 = input.readline().strip()
-with open("dataset_3363_2.txt","w") as output:
-    for i in range(len(s1)-1,-1,-1):
-        if s1[i].isalpha():
-            s2 +=(s1[i] * int(j))
-            j = ""
-        elif s1[i].isdigit():
-            j += s1[i]
-    s2 = s2[::-1]
+
+lst = re.split('(\d*)', s1)
+
+with open('dataset_3363_2.txt', "w") as output:
+    for i in range(0, len(lst)-2, 2):
+        s2+= lst[i] * int(lst[i+1])
     output.write(s2)
